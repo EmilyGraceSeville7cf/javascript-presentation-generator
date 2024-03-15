@@ -79,68 +79,67 @@ English presentation-quiz creation ([open generated presentation][presentation])
       ]
     },
     {
-        "name": "Irregular verbs",
-        "questions": [
-            {
-              "type": "choose-answer",
-              "question": "We {{eat}} in DoDo Pizza two days ago.",
-              "options": [
-                "ate",
-                "has eaten",
-                "to eat",
-                "eat"
-              ],
-              "answer": 1
-            },
-            {
-              "type": "choose-answer",
-              "question": "They {{do}} stipid things yesterday.",
-              "options": [
-                "have been did",
-                "doed",
-                "did do",
-                "did"
-              ],
-              "answer": 4
-            },
-            {
-              "type": "choose-answer",
-              "question": "They {{go}} to the theater two weeks ago.",
-              "options": [
-                "did went",
-                "go",
-                "went",
-                "goed"
-              ],
-              "answer": 3
-            },
-            {
-              "type": "choose-answer",
-              "question": "I and Lana {{make}} this presentation 4 hours ago.",
-              "options": [
-                "made",
-                "does make",
-                "maked",
-                "to make"
-              ],
-              "answer": 1
-            },
-            {
-              "type": "choose-answer",
-              "question": "He {{become}} an excellent writer in 1995.",
-              "options": [
-                "has become",
-                "became",
-                "becomed",
-                "did become"
-              ],
-              "answer": 2
-            }
-        ]
+      "name": "Irregular verbs",
+      "questions": [
+        {
+          "type": "choose-answer",
+          "question": "We {{eat}} in DoDo Pizza two days ago.",
+          "options": [
+            "ate",
+            "has eaten",
+            "to eat",
+            "eat"
+          ],
+          "answer": 1
+        },
+        {
+          "type": "choose-answer",
+          "question": "They {{do}} stipid things yesterday.",
+          "options": [
+            "have been did",
+            "doed",
+            "did do",
+            "did"
+          ],
+          "answer": 4
+        },
+        {
+          "type": "choose-answer",
+          "question": "They {{go}} to the theater two weeks ago.",
+          "options": [
+            "did went",
+            "go",
+            "went",
+            "goed"
+          ],
+          "answer": 3
+        },
+        {
+          "type": "choose-answer",
+          "question": "I and Lana {{make}} this presentation 4 hours ago.",
+          "options": [
+            "made",
+            "does make",
+            "maked",
+            "to make"
+          ],
+          "answer": 1
+        },
+        {
+          "type": "choose-answer",
+          "question": "He {{become}} an excellent writer in 1995.",
+          "options": [
+            "has become",
+            "became",
+            "becomed",
+            "did become"
+          ],
+          "answer": 2
+        }
+      ]
     }
   ]
 }
-
 ```
 
 [presentation]: https://docs.google.com/presentation/d/e/2PACX-1vSvzmac0Jz4Fms_McXm0hxiFlqZOKa51TuAt6Vb7CQDORRf0oYPCp_MOZzsJwvbWA-mr4uzmjD27Xn2/pub?start=false&loop=false&delayms=3000
