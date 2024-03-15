@@ -124,8 +124,3 @@ const defaultConfig = {
         }
     }
 }
-
-/**
- * @type {Config}
- */
-let config = {}
