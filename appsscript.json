@@ -1,0 +1,15 @@
+{
+  "timeZone": "Asia/Vladivostok",
+  "exceptionLogging": "STACKDRIVER",
+  "runtimeVersion": "V8",
+  "dependencies": {
+    "libraries": [
+      {
+        "userSymbol": "JSONSchema",
+        "libraryId": "1SZQYS96PceoL_E1W64T6YgXR9mQXxUkWyrV3ie7A6DCkMsbYEmUGYauZ",
+        "version": "0",
+        "developmentMode": true
+      }
+    ]
+  }
+}
