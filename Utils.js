@@ -1,11 +1,3 @@
-function throwMoreThanOneAnswerError(name) {
-  throw new Error(`Question '${name}' can't contain possible answers as there is just one answer`)
-}
-
-function throwTypeMismatch(name, type) {
-  throw new Error(`Question '${name}' answer should be a ${type}`)
-}
-
 /**
  * @param {Section} section
  */

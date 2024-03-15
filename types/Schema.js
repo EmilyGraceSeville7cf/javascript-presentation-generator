@@ -50,9 +50,9 @@
 
 /**
  * A JSON schema validation result.
- * 
+ *
  * @typedef SchemaValidationResult
- * 
+ *
  * @property {boolean} valid - Whether validation succeeded.
  * @property {Array.<string>} errors - Validation errors.
  */
