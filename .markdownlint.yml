@@ -63,12 +63,12 @@ no-space-in-code: true
 no-space-in-links: true
 fenced-code-language:
   allowed_languages:
-  - fish
-  - javascript
-  - go
-  - json
-  - yaml
-  - text
+    - fish
+    - javascript
+    - go
+    - json
+    - yaml
+    - text
   language_only: true
 first-line-heading:
   front_matter_title: ^\\s*title\\s*[:=]
@@ -86,11 +86,11 @@ proper-names:
   code_blocks: false
   html_elements: false
   names:
-  - Fish
-  - JavaScript
-  - Go
-  - YAML
-  - JSON
+    - Fish
+    - JavaScript
+    - Go
+    - YAML
+    - JSON
 no-alt-text: true
 code-block-style:
   style: fenced
