@@ -4,7 +4,7 @@
  * @returns {void}
  */
 function throwIfConfigIsInvalid_(config) {
-    const result = JSONSchema.validate(schema, config)
+    const result = JSONSchema.validate(schema_, config)
     if (!result.valid)
         throw new Error(`Config is invalid: ${result.errors.join(", ")}`)
 
