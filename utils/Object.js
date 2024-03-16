@@ -3,7 +3,7 @@
  * @param {any} item
  * @returns {boolean}
  */
-function isObject(item) {
+function isObject_(item) {
     return item && typeof item === "object" && !Array.isArray(item)
 }
 
@@ -13,22 +13,22 @@ function isObject(item) {
  * @param  {...any} sources 
  * @returns {object}
  */
-function mergeDeep(target, ...sources) {
+function mergeDeep_(target, ...sources) {
     if (!sources.length)
         return target
 
     const source = sources.shift()
 
-    if (isObject(target) && isObject(source)) {
+    if (isObject_(target) && isObject_(source)) {
         for (const key in source) {
-            if (isObject(source[key])) {
+            if (isObject_(source[key])) {
                 if (!target[key])
                     Object.assign(target, { [key]: {} })
-                mergeDeep(target[key], source[key])
+                mergeDeep_(target[key], source[key])
             } else
                 Object.assign(target, { [key]: source[key] })
         }
     }
 
-    return mergeDeep(target, ...sources)
+    return mergeDeep_(target, ...sources)
 }

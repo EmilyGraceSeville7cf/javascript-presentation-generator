@@ -2,7 +2,7 @@
  * @param {Font} style
  * @param {GoogleAppsScript.Slides.Shape} textBox
  */
-function setFont(style, textBox) {
+function setFont_(style, textBox) {
     textBox
         .getText()
         .getTextStyle()
@@ -18,7 +18,7 @@ function setFont(style, textBox) {
  * @param {GoogleAppsScript.Slides.ParagraphAlignment} paragraphAlignment
  * @param {GoogleAppsScript.Slides.Shape} textBox
  */
-function setAlignment(contentAlignment, paragraphAlignment, textBox) {
+function setAlignment_(contentAlignment, paragraphAlignment, textBox) {
     textBox.setContentAlignment(contentAlignment)
     textBox
         .getText()
@@ -30,7 +30,7 @@ function setAlignment(contentAlignment, paragraphAlignment, textBox) {
  * @param {Background} background
  * @param {GoogleAppsScript.Slides.Slide} slide
  */
-function setBackground(background, slide) {
+function setBackground_(background, slide) {
     const slideBackground = slide.getBackground()
     if (typeof background === "string") slideBackground.setPictureFill(background)
     else
@@ -46,16 +46,16 @@ function setBackground(background, slide) {
  * @param {GoogleAppsScript.Slides.Slide} slide
  * @param {string} text
  */
-function addTitleToTitleSlide(presentation, slide, text) {
-    const style = config.style.titleSlide
+function addTitleToTitleSlide_(presentation, slide, text) {
+    const style = config_.style.titleSlide
     const title = slide
         .insertTextBox(text)
         .setWidth(presentation.getPageWidth() * style.size.width)
         .setHeight(presentation.getPageHeight() * style.size.height)
         .alignOnPage(SlidesApp.AlignmentPosition.CENTER)
 
-    setFont(style, title)
-    setAlignment(
+    setFont_(style, title)
+    setAlignment_(
         SlidesApp.ContentAlignment.MIDDLE,
         SlidesApp.ParagraphAlignment.CENTER,
         title
@@ -68,13 +68,13 @@ function addTitleToTitleSlide(presentation, slide, text) {
  * @param {string} text
  * @param {boolean} centerVertically
  */
-function addTitleToQuestionSlide(
+function addTitleToQuestionSlide_(
     presentation,
     slide,
     text,
     centerVertically = false
 ) {
-    const style = config.style.questionSlide.title
+    const style = config_.style.questionSlide.title
     const title = slide
         .insertTextBox(text)
         .setWidth(presentation.getPageWidth() * style.size.width)
@@ -84,8 +84,8 @@ function addTitleToQuestionSlide(
     if (!centerVertically)
         title.setTop(presentation.getPageHeight() * style.displacementFromTheTop)
 
-    setFont(style, title)
-    setAlignment(
+    setFont_(style, title)
+    setAlignment_(
         SlidesApp.ContentAlignment.MIDDLE,
         SlidesApp.ParagraphAlignment.CENTER,
         title
@@ -97,8 +97,8 @@ function addTitleToQuestionSlide(
  * @param {GoogleAppsScript.Slides.Slide} slide
  * @param {string} url
  */
-function addImageToQuestionSlide(presentation, slide, url) {
-    const style = config.style.questionSlide.image
+function addImageToQuestionSlide_(presentation, slide, url) {
+    const style = config_.style.questionSlide.image
     const image = slide.insertImage(url)
 
     let boundingBoxWidth = presentation.getPageWidth() * style.size.width
@@ -140,14 +140,14 @@ function addImageToQuestionSlide(presentation, slide, url) {
  * @param {number} rightOptionNumber
  * @param {boolean} highlightOptions
  */
-function addOptionsToQuestionSlide(
+function addOptionsToQuestionSlide_(
     presentation,
     slide,
     options,
     rightOptionNumber = 0,
     highlightOptions = false
 ) {
-    const style = config.style.questionSlide.options
+    const style = config_.style.questionSlide.options
 
     const leftCorner =
         presentation.getPageWidth() / 2 -
@@ -190,7 +190,7 @@ function addOptionsToQuestionSlide(
                 option.getText().setText(`${prefix}${option.getText().asString()}${suffix}`)
         }
 
-        setFont(fontStyle, option)
+        setFont_(fontStyle, option)
 
         option
             .setContentAlignment(SlidesApp.ContentAlignment.MIDDLE)
@@ -205,8 +205,8 @@ function addOptionsToQuestionSlide(
  * @param {GoogleAppsScript.Slides.Slide} slide
  * @param {number} value
  */
-function tryAddProgressBarToTitleSlide(presentation, slide, value) {
-    const style = config.style.titleSlide.progressBar
+function tryAddProgressBarToTitleSlide_(presentation, slide, value) {
+    const style = config_.style.titleSlide.progressBar
 
     if (!style.show) return
 
@@ -252,8 +252,8 @@ function tryAddProgressBarToTitleSlide(presentation, slide, value) {
  * @param {GoogleAppsScript.Slides.Slide} slide
  * @param {number} value
  */
-function tryAddProgressBarToQuestionSlide(presentation, slide, value) {
-    const style = config.style.questionSlide.progressBar
+function tryAddProgressBarToQuestionSlide_(presentation, slide, value) {
+    const style = config_.style.questionSlide.progressBar
 
     if (!style.show) return
 
@@ -299,27 +299,27 @@ function tryAddProgressBarToQuestionSlide(presentation, slide, value) {
  * @param {Question} question
  * @param {number} value
  */
-function addFillPlaceholderQuestion(presentation, question, value) {
+function addFillPlaceholderQuestion_(presentation, question, value) {
     if (!/\{\{.+\}\}/.test(question.question))
         throw new Error(
             `Question '${question.question}' doesn't contain a placeholder denoted as double curly braces: {{placeholder}}`
         )
 
-    const background = config.style.questionSlide.background
+    const background = config_.style.questionSlide.background
     const firstSlide = presentation.appendSlide()
-    addTitleToQuestionSlide(presentation, firstSlide, question.question, true)
-    setBackground(background, firstSlide)
-    tryAddProgressBarToQuestionSlide(presentation, firstSlide, value)
+    addTitleToQuestionSlide_(presentation, firstSlide, question.question, true)
+    setBackground_(background, firstSlide)
+    tryAddProgressBarToQuestionSlide_(presentation, firstSlide, value)
 
     const secondSlide = presentation.appendSlide()
-    addTitleToQuestionSlide(
+    addTitleToQuestionSlide_(
         presentation,
         secondSlide,
         question.question.replace(/\{\{.+\}\}/, question.answer),
         true
     )
-    setBackground(background, secondSlide)
-    tryAddProgressBarToQuestionSlide(presentation, secondSlide, value)
+    setBackground_(background, secondSlide)
+    tryAddProgressBarToQuestionSlide_(presentation, secondSlide, value)
 
     console.log(
         `Question '${question.question}' with a placeholder has been created`
@@ -331,19 +331,19 @@ function addFillPlaceholderQuestion(presentation, question, value) {
  * @param {Question} question
  * @param {number} value
  */
-function addUnderstandTextQuestion(presentation, question, value) {
-    const background = config.style.questionSlide.background
+function addUnderstandTextQuestion_(presentation, question, value) {
+    const background = config_.style.questionSlide.background
 
     const firstSlide = presentation.appendSlide()
-    addTitleToQuestionSlide(presentation, firstSlide, question.question, true)
-    setBackground(background, firstSlide)
-    tryAddProgressBarToQuestionSlide(presentation, firstSlide, value)
+    addTitleToQuestionSlide_(presentation, firstSlide, question.question, true)
+    setBackground_(background, firstSlide)
+    tryAddProgressBarToQuestionSlide_(presentation, firstSlide, value)
 
     const secondSlide = presentation.appendSlide()
-    addTitleToQuestionSlide(presentation, secondSlide, question.question)
-    addImageToQuestionSlide(presentation, secondSlide, question.answer)
-    setBackground(background, secondSlide)
-    tryAddProgressBarToQuestionSlide(presentation, secondSlide, value)
+    addTitleToQuestionSlide_(presentation, secondSlide, question.question)
+    addImageToQuestionSlide_(presentation, secondSlide, question.answer)
+    setBackground_(background, secondSlide)
+    tryAddProgressBarToQuestionSlide_(presentation, secondSlide, value)
 
     console.log(`Question '${question.question}' with text has been created`)
 }
@@ -353,20 +353,20 @@ function addUnderstandTextQuestion(presentation, question, value) {
  * @param {Question} question
  * @param {number} value
  */
-function addUnderstandImageQuestion(presentation, question, value) {
-    const background = config.style.questionSlide.background
+function addUnderstandImageQuestion_(presentation, question, value) {
+    const background = config_.style.questionSlide.background
 
     const firstSlide = presentation.appendSlide()
-    addTitleToQuestionSlide(presentation, firstSlide, "What is it?")
-    addImageToQuestionSlide(presentation, firstSlide, question.question)
-    setBackground(background, firstSlide)
-    tryAddProgressBarToQuestionSlide(presentation, firstSlide, value)
+    addTitleToQuestionSlide_(presentation, firstSlide, "What is it?")
+    addImageToQuestionSlide_(presentation, firstSlide, question.question)
+    setBackground_(background, firstSlide)
+    tryAddProgressBarToQuestionSlide_(presentation, firstSlide, value)
 
     const secondSlide = presentation.appendSlide()
-    addTitleToQuestionSlide(presentation, secondSlide, question.answer)
-    addImageToQuestionSlide(presentation, secondSlide, question.question)
-    setBackground(background, secondSlide)
-    tryAddProgressBarToQuestionSlide(presentation, secondSlide, value)
+    addTitleToQuestionSlide_(presentation, secondSlide, question.answer)
+    addImageToQuestionSlide_(presentation, secondSlide, question.question)
+    setBackground_(background, secondSlide)
+    tryAddProgressBarToQuestionSlide_(presentation, secondSlide, value)
 
     console.log(
         `Question '${question.answer}' (answer shown) with an image has been created`
@@ -378,26 +378,26 @@ function addUnderstandImageQuestion(presentation, question, value) {
  * @param {Question} question
  * @param {number} value
  */
-function addChooseAnswerQuestion(presentation, question, value) {
-    const background = config.style.questionSlide.background
+function addChooseAnswerQuestion_(presentation, question, value) {
+    const background = config_.style.questionSlide.background
 
     const firstSlide = presentation.appendSlide()
-    addTitleToQuestionSlide(presentation, firstSlide, question.question)
-    addOptionsToQuestionSlide(presentation, firstSlide, question.options)
-    setBackground(background, firstSlide)
-    tryAddProgressBarToQuestionSlide(presentation, firstSlide, value)
+    addTitleToQuestionSlide_(presentation, firstSlide, question.question)
+    addOptionsToQuestionSlide_(presentation, firstSlide, question.options)
+    setBackground_(background, firstSlide)
+    tryAddProgressBarToQuestionSlide_(presentation, firstSlide, value)
 
     const secondSlide = presentation.appendSlide()
-    addTitleToQuestionSlide(presentation, secondSlide, question.question)
-    addOptionsToQuestionSlide(
+    addTitleToQuestionSlide_(presentation, secondSlide, question.question)
+    addOptionsToQuestionSlide_(
         presentation,
         secondSlide,
         question.options,
         question.answer,
         true
     )
-    setBackground(background, secondSlide)
-    tryAddProgressBarToQuestionSlide(presentation, secondSlide, value)
+    setBackground_(background, secondSlide)
+    tryAddProgressBarToQuestionSlide_(presentation, secondSlide, value)
 
     console.log(
         `Question '${question.question}' with several options has been created`
@@ -409,13 +409,13 @@ function addChooseAnswerQuestion(presentation, question, value) {
  * @param {Section} section
  * @param {number} value
  */
-function addSection(presentation, section, value) {
+function addSection_(presentation, section, value) {
     if (typeof section.questions === "undefined") return
 
     const titleSlide = presentation.appendSlide()
-    addTitleToTitleSlide(presentation, titleSlide, section.name)
-    setBackground(config.style.titleSlide.background, titleSlide)
-    tryAddProgressBarToTitleSlide(presentation, titleSlide, value)
+    addTitleToTitleSlide_(presentation, titleSlide, section.name)
+    setBackground_(config_.style.titleSlide.background, titleSlide)
+    tryAddProgressBarToTitleSlide_(presentation, titleSlide, value)
 
     const shownQuestions = section.questions.filter(
         (question) => question.show !== false
@@ -432,28 +432,28 @@ function addSection(presentation, section, value) {
 
         switch (question.type) {
             case "fill-placeholder":
-                addFillPlaceholderQuestion(
+                addFillPlaceholderQuestion_(
                     presentation,
                     question,
                     questionIndex / shownQuestions
                 )
                 break
             case "understand-text":
-                addUnderstandTextQuestion(
+                addUnderstandTextQuestion_(
                     presentation,
                     question,
                     questionIndex / shownQuestions
                 )
                 break
             case "understand-picture":
-                addUnderstandImageQuestion(
+                addUnderstandImageQuestion_(
                     presentation,
                     question,
                     questionIndex / shownQuestions
                 )
                 break
             case "choose-answer":
-                addChooseAnswerQuestion(
+                addChooseAnswerQuestion_(
                     presentation,
                     question,
                     questionIndex / shownQuestions

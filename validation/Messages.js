@@ -3,7 +3,7 @@
  * 
  * @returns {string}
  */
-function severalAnswersError(name) {
+function severalAnswersError_(name) {
     return `Question '${name}' can't contain possible answers as there is just one answer`
 }
 
@@ -13,7 +13,7 @@ function severalAnswersError(name) {
  * 
  * @returns {string}
  */
-function typeMismatchError(name, type) {
+function typeMismatchError_(name, type) {
     return `Question '${name}' answer should be a ${type}`
 }
 
@@ -23,19 +23,7 @@ function typeMismatchError(name, type) {
  * 
  * @returns {string}
  */
-function placeholderError(name, expectPlaceholder) {
-    let verb = expectPlaceholder ? "doesn't contain" : "contains"
-    let type = expectPlaceholder ? "Question" : "Answer"
-    return `${type} '${name}' ${verb} a placeholder denoted as double curly braces: {{placeholder}}`
-}
-
-/**
- * @param {string} name
- * @param {boolean} expectPlaceholder
- * 
- * @returns {string}
- */
-function placeholderError(name, expectPlaceholder) {
+function placeholderError_(name, expectPlaceholder) {
     let verb = expectPlaceholder ? "doesn't contain" : "contains"
     let type = expectPlaceholder ? "Question" : "Answer"
     return `${type} '${name}' ${verb} a placeholder denoted as double curly braces: {{placeholder}}`
@@ -48,7 +36,7 @@ function placeholderError(name, expectPlaceholder) {
  * 
  * @returns {string}
  */
-function urlError(name, type, expectUrl) {
+function urlError_(name, type, expectUrl) {
     let verb = expectUrl ? "doesn't start with" : "starts with"
     return `${type} '${name}' ${verb} a URL: http:// or https://`
 }

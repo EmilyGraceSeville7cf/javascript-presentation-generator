@@ -1,18 +1,18 @@
 /**
  * @param {Section} section
  */
-function isEmptySection(section) {
+function isEmptySection_(section) {
     return section.questions.filter((question) => question.show !== false).length === 0
 }
 
 /**
- * @param {Config} userPreferences
+ * @param {Config} [userPreferences]
  * 
  * @returns {Config}
  */
-function getPreferences(userPreferences) {
+function getPreferences_(userPreferences) {
     if (typeof userPreferences !== "undefined")
-        return mergeDeep(defaultConfig, userPreferences)
+        return mergeDeep_(defaultConfig, userPreferences)
 
     const configName = "generate presentation.json"
     let iterator = DriveApp.getFilesByName(configName)
@@ -20,5 +20,5 @@ function getPreferences(userPreferences) {
         throw new Error(`'${configName}' config doesn't exist`)
 
     const configContent = JSON.parse(iterator.next().getBlob().getDataAsString())
-    return mergeDeep(defaultConfig, configContent)
+    return mergeDeep_(defaultConfig, configContent)
 }

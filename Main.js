@@ -1,33 +1,35 @@
 /**
  * @type {Config}
  */
-let config = {}
+let config_ = {}
 
 /**
- * @param {Config} userPreferences
+ * Creates a presentation from specific user preferences.
+ * 
+ * @param {Config} [userPreferences]
  * 
  * @returns {string}
  */
 function generate(userPreferences) {
-    config = getPreferences(userPreferences)
-    throwIfConfigIsInvalid(config)
+    config_ = getPreferences_(userPreferences)
+    throwIfConfigIsInvalid_(config_)
 
-    const presentation = SlidesApp.create(config.general.name)
+    const presentation = SlidesApp.create(config_.general.name)
 
-    const nonEmptySections = config.sections.filter(
-        (section) => !isEmptySection(section)
+    const nonEmptySections = config_.sections.filter(
+        (section) => !isEmptySection_(section)
     ).length
     let sectionIndex = 1
 
-    for (const section of config.sections) {
-        if (isEmptySection(section)) {
+    for (const section of config_.sections) {
+        if (isEmptySection_(section)) {
             console.error(
                 `Section '${section.name}' has been skipped because 'show' property is false for all of questions`
             )
             continue
         }
 
-        addSection(presentation, section, sectionIndex / nonEmptySections)
+        addSection_(presentation, section, sectionIndex / nonEmptySections)
         sectionIndex++
         console.log(`Section '${section.name}' has been created`)
     }
