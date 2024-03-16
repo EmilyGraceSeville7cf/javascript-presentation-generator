@@ -38,14 +38,6 @@ const schema = {
                     minimum: 1,
                     examples: [10, 20, 30, 40, 50]
                 },
-                name: {
-                    // new
-                    title: "name",
-                    description: "A font name",
-                    type: "string",
-                    minLength: 1,
-                    examples: ["Arial"]
-                },
                 bold: {
                     title: "bold",
                     description: "Whether font is bold",
@@ -137,7 +129,6 @@ const schema = {
                     $ref: "#/definitions/decoration"
                 },
                 suffix: {
-                    // new
                     title: "suffix",
                     $ref: "#/definitions/decoration"
                 }
