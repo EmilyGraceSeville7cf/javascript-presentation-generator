@@ -198,10 +198,19 @@ function addOptionsToQuestionSlide(
 
         if (highlightOptions) {
             let prefix = style.right.prefix
-            if (i !== rightOptionNumber - 1) prefix = style.other.prefix
+            let suffix = style.right.suffix
+            if (i !== rightOptionNumber - 1) {
+                prefix = style.other.prefix
+                suffix = style.other.suffix
+            }
+
+            if (prefix.length !== 0)
+                prefix = `${prefix} `
+            if (suffix.length !== 0)
+                suffix = ` ${suffix}`
 
             if (prefix.length > 0)
-                option.getText().setText(`${prefix} ${option.getText().asString()}`)
+                option.getText().setText(`${prefix}${option.getText().asString()}${suffix}`)
         }
 
         setFont(fontStyle, option)
