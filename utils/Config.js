@@ -12,7 +12,7 @@ function isEmptySection_(section) {
  */
 function getPreferences_(userPreferences) {
     if (typeof userPreferences !== "undefined")
-        return mergeDeep_(defaultConfig, userPreferences)
+        return mergeDeep_(defaultConfig_, userPreferences)
 
     const configName = "generate presentation.json"
     let iterator = DriveApp.getFilesByName(configName)
@@ -20,5 +20,5 @@ function getPreferences_(userPreferences) {
         throw new Error(`'${configName}' config doesn't exist`)
 
     const configContent = JSON.parse(iterator.next().getBlob().getDataAsString())
-    return mergeDeep_(defaultConfig, configContent)
+    return mergeDeep_(defaultConfig_, configContent)
 }

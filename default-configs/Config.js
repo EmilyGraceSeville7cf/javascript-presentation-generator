@@ -1,7 +1,7 @@
 /**
  * @type {Config}
  */
-const defaultConfig = {
+const defaultConfig_ = {
     style: {
         titleSlide: {
             color: {

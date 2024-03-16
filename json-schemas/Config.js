@@ -1,7 +1,7 @@
 /**
  * @type {Schema}
  */
-const schema = {
+const schema_ = {
     definitions: {
         relativeSize: {
             description: "A relative size",
