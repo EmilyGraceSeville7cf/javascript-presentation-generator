@@ -3,9 +3,13 @@
  */
 let config = {}
 
-
-function main() {
-    config = mergeDefaultConfigWithUserPreferences()
+/**
+ * @param {Config} userPreferences
+ * 
+ * @returns {string}
+ */
+function generate(userPreferences) {
+    config = getPreferences(userPreferences)
     throwIfConfigIsInvalid(config)
 
     const presentation = SlidesApp.create(config.general.name)
@@ -30,4 +34,6 @@ function main() {
 
     presentation.getSlides()[0].remove()
     console.log(`Presentation URL: ${presentation.getUrl()}`)
+
+    return presentation.getUrl()
 }
