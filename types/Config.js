@@ -11,7 +11,6 @@
  *
  * @typedef Font
  * @property {number} size - A font size (range: 1..).
- * @property {string} name - A font name (length range: 1..).
  * @property {number} bold - Whether font is bold or not.
  * @property {number} italic - Whether font is bold or not.
  * @property {number} underline - Whether font is underlined or not.

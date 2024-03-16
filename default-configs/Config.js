@@ -11,7 +11,6 @@ const defaultConfig = {
             },
             font: {
                 size: 50,
-                name: "Arial",
                 bold: true,
                 italic: false,
                 underline: true
