@@ -77,6 +77,7 @@ no-empty-links: true
 required-headings:
   headings:
     - + # Heading is expected to be here
+    - "## Installation" # Installation steps
     - "## Pros and cons" # Comparison with other tools
     - "## Introduction example" # Quick Introduction example to quickly show main features
     - "## Syntax" # Explanation of how to use this tool with Go-style placeholders

@@ -4,6 +4,12 @@ Generates presentation from a JSON file or an JavaScript object config.
 
 Library identifier: `1Uu21GxizeyM_XAFh4L2Lt-k26tPf8U4XcVri4V2OXXIQlhZlXqog3c1E`
 
+## Installation
+
+For installation steps consult [this][libraries] article.
+
+[libraries]: https://developers.google.com/apps-script/guides/libraries
+
 ## Pros and cons
 
 - :white_check_mark: Simple configuration to create presentation-quizzes
